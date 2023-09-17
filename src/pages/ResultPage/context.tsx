@@ -4,12 +4,16 @@ import {
 	mockActualDataList,
 	mockExpectedDataList,
 } from "../../components/__tests__/mockData";
+import {
+	TestResultType,
+	useReadResult,
+} from "../../components/hooks/useReadResult";
 
 export type ResultContextType = {
 	states: {
 		selectedIndex: number;
-		expectedDataList: AnyJsonObject[];
-		actualDataList: AnyJsonObject[];
+		expectedDataList: TestResultType[];
+		actualDataList: TestResultType[];
 	};
 	methods: {
 		setSelectedIndex: (value: number) => void;
@@ -25,15 +29,19 @@ export const ResultContextProvider: React.FC<{
 }> = ({ children }) => {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const [expectedDataList, setExpectedDataList] = useState<
-		AnyJsonObject[]
+		TestResultType[]
 	>([]);
 	const [actualDataList, setActualDataList] = useState<
-		AnyJsonObject[]
+		TestResultType[]
 	>([]);
 
+	const { getMappedTestResults } = useReadResult();
+
 	useEffect(() => {
-		setExpectedDataList(mockExpectedDataList);
-		setActualDataList(mockActualDataList);
+		const { expected_data, actual_data } = getMappedTestResults();
+		console.log({ expected_data, actual_data });
+		setExpectedDataList(expected_data);
+		setActualDataList(actual_data);
 	}, []);
 
 	const contextValues: ResultContextType = {

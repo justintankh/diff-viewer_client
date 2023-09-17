@@ -1,0 +1,28 @@
+.SettingPageContainer {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+}
+
+.LeftColumnLayout {
+	display: grid;
+	grid-template-rows: 1fr 5fr;
+}
+
+.AutocompleteContainer {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	align-items: center;
+}
+
+.GroupContainer {
+	display: grid;
+	align-items: center;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-gap: 5px;
+}
+
+.NestedInput {
+	/* display: grid;
+	grid-template-rows: 1fr 1fr;
+	align-items: center; */
+}

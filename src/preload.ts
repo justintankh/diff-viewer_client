@@ -1,14 +1,9 @@
 import { ipcRenderer, contextBridge } from "electron";
-import fs from "fs";
-import path from "path";
+
 declare global {
 	interface Window {
 		Main: typeof api;
 		ipcRenderer: typeof ipcRenderer;
-		require: typeof require;
-		fs: typeof fs;
-		path: typeof path;
-		appPath: string;
 	}
 }
 
@@ -52,38 +47,4 @@ contextBridge.exposeInMainWorld("ipcRenderer", ipcRenderer);
 /**
  * Pre-load require
  */
-contextBridge.exposeInMainWorld("require", require);
-contextBridge.exposeInMainWorld("fs", fs);
-contextBridge.exposeInMainWorld("path", path);
-contextBridge.exposeInMainWorld("appPath", getAppDataPath());
-
-function getAppDataPath() {
-	switch (process.platform) {
-		case "darwin": {
-			return path.join(
-				process.env["HOME"]!,
-				"Library",
-				"Application Support",
-				"regression-test-app"
-			);
-		}
-		case "win32": {
-			return path.join(
-				process.env.APPDATA!,
-				"regression-test-app"
-			);
-		}
-		case "linux": {
-			return path.join(
-				process.env["HOME"]!,
-				"regression-test-app"
-			);
-		}
-		default: {
-			console.log("Unsupported platform!");
-			process.exit(1);
-		}
-	}
-}
-
 console.log("ran preload.ts");

@@ -105,6 +105,16 @@ export const mockExpectedDataList = [
 			{ name: "sleep", time: "22:00" },
 		],
 	},
+	{
+		name: "super-2",
+		age: 18,
+		task: [
+			{
+				name: "eat",
+				time: "09:00",
+			},
+		],
+	},
 ];
 export const mockActualDataList = [
 	{
@@ -223,6 +233,16 @@ export const mockActualDataList = [
 			{ name: "work", time: "10:00" },
 			{ name: "sleep", time: "23:00" },
 			{ name: "running", time: "08:00" },
+		],
+	},
+	{
+		name: "super-2",
+		age: 18,
+		task: [
+			{
+				name: "eat",
+				time: "09:00",
+			},
 		],
 	},
 ];

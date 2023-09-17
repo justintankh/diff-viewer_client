@@ -20,6 +20,8 @@ function createWindow() {
 		// fullscreen: true,
 		fullscreenable: true,
 		webPreferences: {
+			contextIsolation: true,
+			nodeIntegration: true,
 			preload: join(__dirname, "preload.js"),
 		},
 	});

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { JsonInput as MantineJsonInput } from "@mantine/core";
 import { AnyJsonObject } from "../types";
 import { getResolvedInput } from "./utils";
-import { UseMuttableData } from "../../pages/ResultPage/useMutableResult";
+import { UseMuttableData } from "../hooks/useMutableResult";
+import "./JsonInput.css";
 
 type JsonInputProps = {
 	id: string;
@@ -49,6 +50,7 @@ export const JsonInput = (props: JsonInputProps) => {
 			id={id}
 			ref={jsonInputRef}
 			className={className}
+			radius="md"
 			label={label}
 			placeholder="Json will be validated on blur"
 			validationError="Invalid JSON"
@@ -60,6 +62,7 @@ export const JsonInput = (props: JsonInputProps) => {
 				setValue(value);
 				setError(false);
 
+				// Clear selected data
 				if (!value) {
 					setData({});
 					return;

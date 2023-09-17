@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import ReactJsonViewCompare from "react-json-view-compare";
 import { NativeSelect } from "@mantine/core";
 import { AnyJsonObject } from "../types";
@@ -19,9 +19,8 @@ export const JsonDiff = (props: JsonDiffProps) => {
 
 	return (
 		<>
-			<div className="">
+			<div className="my-4 mr-6">
 				<NativeSelect
-					className="mb-4"
 					data={options}
 					label="Select the index to compare"
 					description="Index is by execution command order"

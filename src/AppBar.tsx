@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Icon from "./assets/icons/Icon-Electron.png";
+import { IconGhost } from "@tabler/icons-react";
 
 function AppBar() {
 	const [isMaximize, setMaximize] = useState(false);
@@ -15,15 +15,11 @@ function AppBar() {
 
 	return (
 		<>
-			<div className="py-0.5 flex justify-between draggable">
+			<div className="py-0.5 flex justify-between draggable ">
 				<div className="inline-flex">
-					<img
-						className="h-6 lg:-ml-2"
-						src={Icon}
-						alt="Icon of Electron"
-					/>
-					<p className="text-xs md:pt-1 md:-ml-1 lg:-ml-2">
-						Vite App
+					<IconGhost className="h-6 mx-2" />
+					<p className="text-xs md:pt-1 md:-ml-1 lg:-ml-1">
+						Regression Test
 					</p>
 				</div>
 				<div className="inline-flex -mt-1">
@@ -44,7 +40,7 @@ function AppBar() {
 					</button>
 				</div>
 			</div>
-			<div className="text-black undraggable">
+			{/* <div className="text-black undraggable">
 				<div className="flex text-center">
 					<div className="text-sm w-8  hover:bg-gray-300">
 						File
@@ -62,7 +58,7 @@ function AppBar() {
 						Help
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</>
 	);
 }
