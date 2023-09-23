@@ -1,0 +1,26 @@
+.scrollbar::-webkit-scrollbar {
+	width: 15px;
+	height: 15px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+	border-radius: 100vh;
+	background: #f7f4ed;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+	background: #515157;
+	border-radius: 100vh;
+	border: 3px solid #f6f7ed;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+	background: #0000003a;
+}
+
+.passed {
+	background-color: #66f466;
+}
+.failed {
+	background-color: #f46666;
+}

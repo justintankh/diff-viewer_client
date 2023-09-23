@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { JsonDiff } from "../../components/JsonDiff/JsonDiff";
 import { JsonInput } from "../../components/JsonInput/JsonInput";
-import { ResultContextProvider } from "./context";
+import { ResultContextProvider, ResultPageContext } from "./context";
 import { useMutableResult } from "../../components/hooks/useMutableResult";
-import { Group, Badge } from "@mantine/core";
+import { Group, Badge, NativeSelect } from "@mantine/core";
 
 import "./ResultPage.css";
 import { SUPPORTED_EXT } from "../../components/const";
 import { AnyJsonObject } from "../../components/types";
+import { CsvDiff } from "../../components/CsvDiff/CsvDiff";
 
 const ResultPage = () => {
+	const {
+		methods: { setSelectedIndex },
+	} = useContext(ResultPageContext);
+
 	const {
 		staticSelectedData: {
 			selected_expected_info,
@@ -74,26 +79,73 @@ const ResultPage = () => {
 					)}
 					{type === SUPPORTED_EXT.CSV && (
 						<>
-							<div>Expected - CSV INPUT HERE</div>
-							<div>Actual - CSV INPUT HERE</div>
+							<JsonInput
+								id="JsonInput-Expected"
+								useMuttableData={useExpected}
+								formatOnBlur={false}
+								initialValue={
+									expected_data as
+										| AnyJsonObject
+										| undefined
+								}
+								className="mb-5"
+								label="Expected JSON"
+							/>
+							<JsonInput
+								id="JsonInput-Actual"
+								useMuttableData={useActual}
+								formatOnBlur={false}
+								initialValue={
+									actual_data as
+										| AnyJsonObject
+										| undefined
+								}
+								label="Actual JSON"
+							/>
 						</>
 					)}
 				</div>
 			</div>
 			<div className="h-screen">
-				<JsonDiff
-					expected={{
-						csv:
+				<div className="my-4 mr-6">
+					<NativeSelect
+						data={options}
+						label="Select the index to compare"
+						description="Index is by execution command order"
+						onChange={(e) => {
+							const index =
+								parseInt(
+									e.currentTarget.value.slice(-1)
+								) - 1;
+							setSelectedIndex(index);
+						}}
+					/>
+				</div>
+
+				{type === SUPPORTED_EXT.JSON && (
+					<JsonDiff
+						expected={
 							(muttableExpectedData as AnyJsonObject) ??
-							(expected_data as AnyJsonObject),
-					}}
-					actual={{
-						csv:
+							(expected_data as AnyJsonObject)
+						}
+						actual={
 							(muttableActualData as AnyJsonObject) ??
-							(actual_data as AnyJsonObject),
-					}}
-					options={options}
-				/>
+							(actual_data as AnyJsonObject)
+						}
+					/>
+				)}
+				{type === SUPPORTED_EXT.CSV && (
+					<CsvDiff
+						expected={
+							(muttableExpectedData ??
+								expected_data) as string
+						}
+						actual={
+							(muttableActualData ??
+								actual_data) as string
+						}
+					/>
+				)}
 			</div>
 		</div>
 	);

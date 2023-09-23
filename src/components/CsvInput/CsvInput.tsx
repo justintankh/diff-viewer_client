@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { JsonInput as MantineJsonInput } from "@mantine/core";
 import { AnyJsonObject } from "../types";
-import { getResolvedInput } from "./utils";
+import { getResolvedInput } from "../JsonInput/utils";
 import { UseMuttableData } from "../hooks/useMutableResult";
 import "./JsonInput.css";
 
@@ -14,7 +14,7 @@ type JsonInputProps = {
 	formatOnBlur?: boolean;
 };
 
-export const JsonInput = (props: JsonInputProps) => {
+export const CsvInput = (props: JsonInputProps) => {
 	const {
 		id,
 		initialValue,

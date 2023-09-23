@@ -1,0 +1,4 @@
+{
+	"expectedFolderPath": "./testResults/expected",
+	"actualFolderPath": "./testResults/actual"
+}

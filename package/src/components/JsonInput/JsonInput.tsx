@@ -7,22 +7,15 @@ import "./JsonInput.css";
 
 type JsonInputProps = {
 	id: string;
-	className?: string;
-	label: string;
-	useMuttableData: UseMuttableData;
 	initialValue?: AnyJsonObject;
-	formatOnBlur?: boolean;
+	label: string;
+	className?: string;
+	useMuttableData: UseMuttableData;
 };
 
 export const JsonInput = (props: JsonInputProps) => {
-	const {
-		id,
-		initialValue,
-		label,
-		className,
-		useMuttableData,
-		formatOnBlur = true,
-	} = props;
+	const { id, initialValue, label, className, useMuttableData } =
+		props;
 	const resolvedIinitialValue = getResolvedInput(initialValue);
 
 	const jsonInputRef = React.useRef<HTMLTextAreaElement>(null);
@@ -57,14 +50,14 @@ export const JsonInput = (props: JsonInputProps) => {
 			id={id}
 			ref={jsonInputRef}
 			className={className}
-			label={label}
-			formatOnBlur={formatOnBlur}
-			value={value}
-			error={isError}
 			radius="md"
+			label={label}
 			placeholder="Json will be validated on blur"
 			validationError="Invalid JSON"
+			formatOnBlur
 			minRows={calculateRowHeight()}
+			value={value}
+			error={isError}
 			onChange={(value) => {
 				setValue(value);
 				setError(false);
