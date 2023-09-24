@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DEFAULT_SETTINGS, SETTINGS_FILEPATH } from "../const";
+import { keysExistInObject } from "./utils";
 
 type Settings = typeof DEFAULT_SETTINGS;
 
@@ -19,11 +20,7 @@ export const useSettingsStore = () => {
 				})
 			);
 		/* Validate data */
-		if (
-			data &&
-			data[Object.keys(DEFAULT_SETTINGS)[0]] &&
-			data[Object.keys(DEFAULT_SETTINGS)[1]]
-		) {
+		if (data && keysExistInObject(DEFAULT_SETTINGS, data)) {
 			setSettings(data);
 			return;
 		}

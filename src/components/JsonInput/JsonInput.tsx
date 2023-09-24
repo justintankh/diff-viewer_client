@@ -8,8 +8,8 @@ import "./JsonInput.css";
 type JsonInputProps = {
 	id: string;
 	className?: string;
-	label: string;
-	useMuttableData: UseMuttableData;
+	label?: string;
+	useMuttableData?: UseMuttableData;
 	initialValue?: AnyJsonObject;
 	formatOnBlur?: boolean;
 };
@@ -29,6 +29,7 @@ export const JsonInput = (props: JsonInputProps) => {
 
 	useEffect(() => {
 		setValue(resolvedIinitialValue);
+		console.log("JsonInput useEffect");
 		setTimeout(() => {
 			jsonInputRef.current && jsonInputRef.current.focus();
 		}, 10);
@@ -42,7 +43,7 @@ export const JsonInput = (props: JsonInputProps) => {
 
 	const [value, setValue] = useState(resolvedIinitialValue);
 	const [isError, setError] = useState(false);
-	const [data, setData] = useMuttableData;
+	const [_, setData] = useMuttableData ?? [undefined, () => {}];
 
 	function calculateRowHeight() {
 		const rowPerPx = 14 / 350;

@@ -9,10 +9,16 @@ export const SETTINGS_FILEPATH = window.path.join(
 export const DEFAULT_SETTINGS = {
 	expected_folder_path: window.path.join(
 		window.appPath,
-		"./testResults/expected"
+		"./test_results/expected"
 	),
 	actual_folder_path: window.path.join(
 		window.appPath,
-		"./testResults/actual"
+		"./test_results/actual"
+	),
+	user_test_path: window.path.join(
+		window.appPath,
+		"./user_test_cases"
 	),
 };
+export const EXECUTION_INSTRUCTION_FILE =
+	"execution_instructions.json";

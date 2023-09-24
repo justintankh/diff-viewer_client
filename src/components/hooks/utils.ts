@@ -1,5 +1,6 @@
 import { retrieveCsv, retrieveJson } from "../JsonInput/utils";
 import { SUPPORTED_EXT } from "../const";
+import { AnyJsonObject } from "../types";
 
 const { fs, path } = window;
 
@@ -37,10 +38,11 @@ function isPathFolder(path: string) {
 }
 
 function getDirectories(source: string) {
+	source.endsWith("/") || (source += "/");
 	return fs
 		.readdirSync(source, { withFileTypes: true })
 		.filter((dirent) => isPathFolder(source + dirent.name))
-		.map((dirent) => dirent.name + "/");
+		.map((dirent) => dirent.name);
 }
 
 function obtainResultInfo(file_name: string) {
@@ -60,6 +62,10 @@ function obtainResultInfo(file_name: string) {
 	}
 }
 
+function keysExistInObject(objA: AnyJsonObject, objB: AnyJsonObject) {
+	return Object.keys(objA).every((key) => key in objB);
+}
+
 export {
 	findFilesInDirectories,
 	findExclusive,
@@ -67,4 +73,5 @@ export {
 	isPathFolder,
 	getDirectories,
 	obtainResultInfo,
+	keysExistInObject,
 };

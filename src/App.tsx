@@ -8,6 +8,7 @@ import {
 } from "@tabler/icons-react";
 import { ResultPageWithProvider } from "./pages/ResultPage/ResultPage";
 import { SettingsPage } from "./pages/SettingsPage/SettingsPage";
+import { ExecutionPage } from "./pages/ExecutionPage/ExecutionPage";
 
 function App() {
 	return (
@@ -15,7 +16,7 @@ function App() {
 			{window.Main && (
 				<div className="flex-none">
 					<AppBar />
-					<Tabs keepMounted={false} defaultValue="results">
+					<Tabs keepMounted={true} defaultValue="execution">
 						<Tabs.List>
 							<Tabs.Tab
 								value="execution"
@@ -36,11 +37,11 @@ function App() {
 							</Tabs.Tab>
 						</Tabs.List>
 
-						<Tabs.Panel value="gallery" pt="xs">
-							Gallery tab content
+						<Tabs.Panel value="execution">
+							<ExecutionPage />
 						</Tabs.Panel>
 
-						<Tabs.Panel value="results" pt="xs">
+						<Tabs.Panel value="results">
 							<ResultPageWithProvider />
 						</Tabs.Panel>
 

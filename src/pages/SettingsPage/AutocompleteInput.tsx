@@ -25,7 +25,7 @@ export const AutocompleteInput = (props: AutocompleteInputProps) => {
 		if (isFolder) {
 			const incomingDirectories = getDirectories(path);
 			const nestAutoComplete = incomingDirectories.map(
-				(dir) => directorySel + dir
+				(dir) => directorySel + dir + "/"
 			);
 			setAutoCompleteData(nestAutoComplete);
 		}

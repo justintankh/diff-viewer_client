@@ -1,0 +1,59 @@
+.TopBar {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: space-between;
+
+	/* Size */
+	padding: 1rem;
+
+	/* Colors */
+	background-color: grey;
+	color: white;
+}
+
+/* Dropdown input */
+.TopBar > div {
+	width: 70%;
+	justify-self: left;
+
+	justify-content: center;
+}
+
+/* Button input */
+.TopBar > button {
+	width: 100px;
+	justify-self: right;
+
+	/* Colors */
+	background-color: white;
+	color: black;
+}
+
+.TestContainer {
+	display: grid;
+	grid-template-columns: 1fr;
+
+	/* Size */
+	padding: 1rem;
+	/* padding-top: 1rem; */
+	/* padding-left: 1rem; */
+	/* padding-right: 1rem; */
+}
+
+.LeftColumnLayout {
+	display: grid;
+	grid-template-rows: 1fr 5fr;
+}
+
+.GroupContainer {
+	display: grid;
+	align-items: center;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-gap: 5px;
+}
+
+.NestedInput {
+	/* display: grid;
+	grid-template-rows: 1fr 1fr;
+	align-items: center; */
+}
